@@ -1,0 +1,17 @@
+
+#yearchoose,#monthchoose{
+    /*消除選單樣式*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background: url('../images/arrow.png') no-repeat scroll right center transparent;
+    padding-right: 15px;
+
+}
+body{
+    word-break: break-all;
+    font-family: "微軟正黑體", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.card_label{
+    text-decoration: none;
+}

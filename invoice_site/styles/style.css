@@ -1,0 +1,16 @@
+
+body{
+    padding-top:60px;
+    background-color:beige;
+    font-size:20px;
+}
+.index_btn_div{
+    padding-top:5%;
+    padding-bottom:5%;
+    text-align:center;
+}
+.index_btn{
+    width:85%; 
+    height:150px;
+    font-size:40px;
+}
