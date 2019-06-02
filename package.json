@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ire33164/Receipt-Lottery/issues"
   },
-  "homepage": "https://github.com/ire33164/Receipt-Lottery#readme"
+  "homepage": "https://github.com/ire33164/Receipt-Lottery#readme",
+  "dependencies": {
+    "parcel": "^1.12.3"
+  }
 }
