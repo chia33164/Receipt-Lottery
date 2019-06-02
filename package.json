@@ -1,0 +1,19 @@
+{
+  "name": "receipt-lottery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ire33164/Receipt-Lottery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ire33164/Receipt-Lottery/issues"
+  },
+  "homepage": "https://github.com/ire33164/Receipt-Lottery#readme"
+}
