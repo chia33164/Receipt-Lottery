@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/ire33164/Receipt-Lottery#readme",
   "dependencies": {
-    "parcel": "^1.12.3"
+    "parcel-bundler": "^1.12.3"
   }
 }
