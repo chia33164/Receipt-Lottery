@@ -12,6 +12,9 @@ body{
     word-break: break-all;
     font-family: "微軟正黑體", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.card_label{
-    text-decoration: none;
+a{
+    text-decoration:none;
+}
+.blackfont{
+    color:black;
 }

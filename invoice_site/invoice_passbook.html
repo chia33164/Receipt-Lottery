@@ -9,8 +9,9 @@
   <link href="styles/passbook_style.css" type="text/css" rel="stylesheet"/>
 
   <title>Invoice</title>
+
 </head>
-<body>
+<body id="pb_body">
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-danger">
     <!--logo的部分-->
     <a class="navbar-brand" href="index.html">發票</a>
@@ -60,7 +61,7 @@
             　<option >1～2</option>
             </select>
             <span style="display:inline;">月</span>
-            <button type="button" class="btn btn-success" style="font-size:100%;" onclick="get_winning()">查詢</button>
+            <button type="button" class="btn btn-success" style="font-size:100%;" onclick="get_detail()">查詢</button>
         </form>
        
 </div>
@@ -68,17 +69,17 @@
 <!--有多少發票的項目-->
 <div id="accordion" role="tablist">
         <div class="card" >
-            <a  class="card_label" data-toggle="collapse" href="#collapseOne" aria-expanded="flase" aria-controls="collapseOne" >
+            <a  class="card_label" style="text-decoration:none;" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <div class="card-header d-flex flex-row justify-content-between" role="tab" id="headingOne" >
-                    <div class="align-self-center" style="width:15%">
+                    <div class="align-self-center" >
                         <div>尚未</div>
                         <div>開獎</div>
                     </div>
-                    <div class="justify-content-center"style="color:black;">
+                    <div class="justify-content-center blackfont">
                         <div>PX12345678</div>
                         <div>2020/20/20</div>
                     </div>
-                    <div>
+                    <div class="align-self-center">
                         <div>電子</div>
                         <div>發票</div>
                     </div>
@@ -94,60 +95,7 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-                <a data-toggle="collapse" href="#collapseTwo" aria-expanded="flase" aria-controls="collapseTwo">
-                    <div class="card-header d-flex flex-row justify-content-between" role="tab" id="headingTwo">
-                        <div class="align-self-center" style="width:15%">
-                            <div>尚未</div>
-                            <div>開獎</div>
-                        </div>
-                        <div class="justify-content-center"style="color:black;">
-                            <div>PX12345678</div>
-  
-                        </div>
-                        <div>
-                            <div>電子</div>
-                            <div>發票</div>
-                        </div>
-                    </div>
-                </a>
-          
-                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div>綠茶2</div>
-                            <div>30元</div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="card">
-                <a data-toggle="collapse" href="#collapseThree" aria-expanded="flase" aria-controls="collapseThree" >
-                    <div class="card-header d-flex flex-row justify-content-between" role="tab" id="headingThree">
-                        <div class="align-self-center" style="width:15%">
-                            <div>尚未</div>
-                            <div>開獎</div>
-                        </div>
-                        <div class="justify-content-center"style="color:black;">
-                            <div>PX12345678</div>
-                            <div>2020/20/20</div>
-                        </div>
-                        <div>
-                            <div>電子</div>
-                            <div>發票</div>
-                        </div>
-                    </div>
-                </a>
-          
-                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div>綠茶3</div>
-                            <div>30元</div>
-                        </div>
-                    </div>
-                </div>
-        </div>        
+       
 </div>
 
   
