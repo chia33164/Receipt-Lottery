@@ -1,15 +1,43 @@
 import * as tf from '@tensorflow/tfjs';
+import {preprocessData} from './preprocess'
 
+let IMAGE_H = 28
+let IMAGE_W = 28
+let IMAGE_SIZE = IMAGE_H * IMAGE_W
 
-const model = await tf.loadLayersModel('localstorage://digit-model')
+let btn = document.getElementById('getPhoto2')
+btn.onchange = async (event) => {
+  let imgData = new preprocessData ()
+  let input = event.path[0]
+  let file = input.files[0]
+  if (file === undefined) {
+    console.log('upload photo again')
+  } else {
+    let path = URL.createObjectURL(file)
+    let testImages = await imgData.processImage(path)
+    let fitData = getTestData(8, testImages)
+    showPredictions(fitData)
+  }
+}
 
-async function showPredictions() {
-    const model = await tf.loadLayersModel('localstorage://digit-model')
-    const testExamples = 8;
-    const examples = data.getTestData(testExamples);
-  
+function getTestData(numExamples, testImages) {
+  // console.log(this.testImages.length)
+  let xs = tf.tensor4d(
+      testImages,
+      [testImages.length / IMAGE_SIZE, IMAGE_H, IMAGE_W, 1]);
+
+  if (numExamples != null) {
+      xs = xs.slice([0, 0, 0, 0], [numExamples, IMAGE_H, IMAGE_W, 1]);
+  }
+  return {xs};
+}
+
+async function showPredictions(data) {
+    const model = await tf.loadLayersModel('indexeddb://my-model')
+
     tf.tidy(() => {
-      const output = model.predict(examples.xs);
+      console.log('start recogintzing... ')
+      const output = model.predict(data.xs);
       const axis = 1;
       const predictions = Array.from(output.argMax(axis).dataSync());
       console.log ('predict : ', predictions)

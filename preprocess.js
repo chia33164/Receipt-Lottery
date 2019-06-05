@@ -211,6 +211,11 @@ export class preprocessData {
                         ctx.drawImage(newCanvas, x, y, 28, 28)
                         let digitData = ctx.getImageData(x, y, 28, 28)
                         for (let i=0; i<digitData.data.length; i+=4) {
+                            digitData.data[i] = digitData.data[i] > 0 ? 255 : 0
+                            digitData.data[i+1] = digitData.data[i+1] > 0 ? 255 : 0
+                            digitData.data[i+2] = digitData.data[i+2] > 0 ? 255 : 0
+                        }
+                        for (let i=0; i<digitData.data.length; i+=4) {
                             numberImageData.push(digitData.data[i] / 255)
                         }
                     })

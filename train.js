@@ -45,9 +45,9 @@ async function train(model, onIteration) {
     loss: 'categoricalCrossentropy',
     metrics: ['accuracy'],
   });
-  const batchSize = 320;
+  const batchSize = 30;
   const validationSplit = 0.15;
-  const trainEpochs = 30
+  const trainEpochs = 30;
   let trainEpochCount = 0;
   let trainBatchCount = 0;
 
@@ -78,6 +78,8 @@ async function train(model, onIteration) {
         }
         if (trainEpochCount === trainEpochs) {
           console.log('finish trainning')
+          // let result = await model.save('indexeddb://my-model2');
+          // console.log(result)
           // let saveResult = await model.save('localstorage://my-model-1')
           // console.log(saveResult)
         } 
