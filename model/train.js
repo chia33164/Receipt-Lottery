@@ -39,14 +39,14 @@ function createDenseModel() {
 }
 
 async function train(model, onIteration) {
-  const optimizer = 'rmsprop';
+  const optimizer = 'adam';
   model.compile({
     optimizer,
     loss: 'categoricalCrossentropy',
     metrics: ['accuracy'],
   });
   const batchSize = 30;
-  const validationSplit = 0.15;
+  const validationSplit = 0.2;
   const trainEpochs = 30;
   let trainEpochCount = 0;
   let trainBatchCount = 0;

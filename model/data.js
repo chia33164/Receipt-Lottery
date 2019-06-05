@@ -61,10 +61,11 @@ export class MnistData {
           await Promise.all([imgRequest, labelsRequest]);
 
       this.datasetLabels = new Uint8Array(await labelsResponse.arrayBuffer())
+      console.log(this.datasetLabels)
     //   let tmp = Array.prototype.slice.call(this.datasetLabels.slice(0, 4000*NUM_CLASSES))
       this.datasetLabels = new Uint8Array(INSERT_LABELs)
-      console.log(this.datasetLabels.length)
-      console.log(this.datasetImages.length)
+    //   console.log(this.datasetLabels.length)
+    //   console.log(this.datasetImages.length)
       let data = new preprocessData()
       
       // Slice the the images and labels into train and test sets.
