@@ -34,12 +34,18 @@ function getTestData(numExamples, testImages) {
 
 async function showPredictions(data) {
     const model = await tf.loadLayersModel('indexeddb://my-model')
+    let result = ''
 
     tf.tidy(() => {
       console.log('start recogintzing... ')
       const output = model.predict(data.xs);
       const axis = 1;
       const predictions = Array.from(output.argMax(axis).dataSync());
-      console.log ('predict : ', predictions)
+      predictions.forEach(digit => {
+        result = result.concat(digit.toString())
+      })
+      console.log ('predict : ', result)
     });
+    let p = document.getElementById('result')
+    p.append(result)
 }
