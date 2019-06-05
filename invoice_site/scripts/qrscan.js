@@ -11,10 +11,10 @@ function readURL(input){
   }
 }
 
-$("#submit").click();
-$("#form").load(function(){      
-    var text = $(this).contents().find("body").text();      //获取到的是json的字符串 
-    var j = $.parseJSON(text);                                         //json字符串转换成json对象       
-    console.log(j)})
+
+$("submit").click(function test(){
+  console.log("aa");
+});
+
 
 
