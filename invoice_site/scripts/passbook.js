@@ -256,7 +256,14 @@ return card_item;
 
 }
 
+function test_detail(){
+  var temp = document.createElement("div");
+  temp.innerHTML = "add";
+  var body = document.getElementById("pb_body");
+  body.appendChild(temp);
+}
 //default_select();
 console.log(test_json[0][1].detail.length);
 default_select()//頁面剛更新時
 renew_detail(test_json);
+
