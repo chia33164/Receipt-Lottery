@@ -1,0 +1,29 @@
+{
+  "name": "receipt-lottery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ire33164/Receipt-Lottery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ire33164/Receipt-Lottery/issues"
+  },
+  "homepage": "https://github.com/ire33164/Receipt-Lottery#readme",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^1.1.2",
+    "parcel-bundler": "^1.12.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.26.0"
+  }
+}
