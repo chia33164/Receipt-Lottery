@@ -1,6 +1,3 @@
-const path = 'https://i.imgur.com/zp2WxI1.jpg'
-
-
 export class preprocessData {
     constructor() {}
     //一维OTSU图像处理算法
@@ -174,7 +171,7 @@ export class preprocessData {
         return digit
     }
 
-    processImage () {
+    processImage (path) {
         return new Promise ((resolve, reject) => {
             const img = new Image()
             const canvas = document.createElement('canvas')
@@ -216,14 +213,10 @@ export class preprocessData {
                         for (let i=0; i<digitData.data.length; i+=4) {
                             numberImageData.push(digitData.data[i] / 255)
                         }
-                        // ctx.putImageData(digitData, 0, 0)
-                        // let formalData = Array.prototype.slice.call(ctx.getImageData(0, 0, 28, 28).data)
-                        // numberImageData = numberImageData.concat(formalData)
-                        // x += num.width + 10
                     })
                 })
                 let result = new Float32Array(numberImageData)
-                console.log('result : ', result)
+                // console.log('result : ', result)
                 resolve(result)
             }
         })
