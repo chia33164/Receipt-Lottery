@@ -118,26 +118,34 @@ function get_detail(){
   var year = yearchoose.options[year_now_index].value;
   var month_now_index = monthchoose.selectedIndex;
   var month = monthchoose.options[month_now_index].value;
+  var month_fix = padLeft(month,2);//補上0
   console.log(year);
-  console.log(month);
-  /* 發request
-  var URL="https://api.einvoice.nat.gov.tw/PB2CAPIVAN/invapp/InvApp?action=QryWinningList&appID=EINV4201904296869&invTerm=10804&version=0.2"
-  var UURL="https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6"
+  console.log(month_fix);
+  /* 發request*/
+  var serverURL = "https://55f5b8ec.ngrok.io/ItemDetail?"+"year="+year+"&month="+month_fix;
   var xhr = new XMLHttpRequest();
-  xhr.open('GET',UURL,true);
+  xhr.open('GET',serverURL,true);
   xhr.withCredentials=false;
   xhr.send();
   xhr.onreadystatechange=function(){
       if(this.readyState==4 && this.status==200){
           var data=JSON.parse(this.responseText);
           console.log(data);
-          special_price=data[1]['endDate'];
+          renew_detail(data);
           
       }
+      else{
+        var acc = document.getElementById("accordion");
+        acc.innerHTML="沒有資料";
+      }
   }
-  */
-  renew_detail(test_json);
-
+}
+//用來補0的function
+function padLeft(str,lenght){
+  if(str.length >= lenght)
+  return str;
+  else
+  return padLeft("0" +str,lenght);
 }
 
 function renew_detail(list_json){
@@ -190,7 +198,7 @@ function add_card(one_invoice_json,theNum,mode){
   //中獎與否
   left_item.className="align-self-center";
   //尚未開獎
-  if(one_invoice_json.Win == 0){left_item.innerHTML = "<div>沒有</div><div>中獎</div>";}
+  if(one_invoice_json.Win == -1){left_item.innerHTML = "<div>沒有</div><div>中獎</div>";}
   else if(one_invoice_json.Win == 1){left_item.innerHTML = "<div>恭喜</div><div>中獎</div>";}
   else if(one_invoice_json.Win == 2){left_item.innerHTML = "<div>尚未</div><div>開獎</div>";}
   //號碼與日期->電子與傳統 //發票種類->//電子與傳統
@@ -265,5 +273,5 @@ function test_detail(){
 //default_select();
 console.log(test_json[0][1].detail.length);
 default_select()//頁面剛更新時
-renew_detail(test_json);
+get_detail();
 

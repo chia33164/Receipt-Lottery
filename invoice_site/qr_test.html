@@ -8,7 +8,7 @@
   <link href="styles/style.css" type="text/css" rel="stylesheet"/>
   <title>Invoice</title>
 </head>
-<body>
+<body id="test_body">
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-danger">
     <!--logo的部分-->
     <a class="navbar-brand" href="index.html">發票</a>
@@ -45,8 +45,9 @@
   </div>
 
   <form  enctype="multipart/form-data">
-    <input name="image" id="image_input" type="file" onchange="ULoad()" targetID="load_img" accept="image/*" />
+    <input name="image" id="image_input" type="file" onchange="readURL(this)" targetID="load_img" accept="image/*" />
     <img id="load_img" src="#" width="90%"/>
+    <button id ="summitbutton" type="button" onclick="sendFormData()" style="background-color: yellow;">send</button>
  </form>
  
 

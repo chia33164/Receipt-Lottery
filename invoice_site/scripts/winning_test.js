@@ -28,27 +28,30 @@ function get_winning(){
     var year = yearchoose.options[year_now_index].value;
     var month_now_index = monthchoose.selectedIndex;
     var month = monthchoose.options[month_now_index].value;
+    var month_fix = padLeft(month,2);//補上0
     console.log(year);
-    console.log(month);
+    console.log(month_fix);
     /* 發request*/
-    var URL="https://api.einvoice.nat.gov.tw/PB2CAPIVAN/invapp/InvApp?action=QryWinningList&appID=EINV4201904296869&invTerm=10804&version=0.2"
-    var UURL="https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6"
-    var TRUE_URL="https://27b74fbb.ngrok.io/prizenum?year=105&month=06"
+    var serverURL = "https://55f5b8ec.ngrok.io/prizenum?"+"year="+year+"&month="+month_fix;
     var xhr = new XMLHttpRequest();
-    xhr.open('POST',TRUE_URL,true);
+    xhr.open('POST',serverURL,true);
     xhr.withCredentials=false;
     xhr.send();
     xhr.onreadystatechange=function(){
         if(this.readyState==4 && this.status==200){
             var data=JSON.parse(this.responseText);
-            console.log(data.msg.updateDate);
-            
+            console.log(data);
+            renew_winning_list(data);
             
         }
     }
-    
-    renew_winning_list(test_json);
-
+}
+//用來補0的funciton
+function padLeft(str,lenght){
+    if(str.length >= lenght)
+    return str;
+    else
+    return padLeft("0" +str,lenght);
 }
 function renew_winning_list(list_json){
     var super_number = document.getElementById("super_num");
@@ -122,5 +125,6 @@ function renew_select_month(){
     }
     monthchoose.length=year_month[index].length;
 }
+
 default_select();
 get_winning();
