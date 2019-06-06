@@ -33,15 +33,16 @@ function get_winning(){
     /* 發request*/
     var URL="https://api.einvoice.nat.gov.tw/PB2CAPIVAN/invapp/InvApp?action=QryWinningList&appID=EINV4201904296869&invTerm=10804&version=0.2"
     var UURL="https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6"
+    var TRUE_URL="https://27b74fbb.ngrok.io/prizenum?year=105&month=06"
     var xhr = new XMLHttpRequest();
-    xhr.open('GET',UURL,true);
+    xhr.open('POST',TRUE_URL,true);
     xhr.withCredentials=false;
     xhr.send();
     xhr.onreadystatechange=function(){
         if(this.readyState==4 && this.status==200){
             var data=JSON.parse(this.responseText);
-            console.log(data);
-            special_price=data[1]['endDate'];
+            console.log(data.msg.updateDate);
+            
             
         }
     }

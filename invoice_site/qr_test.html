@@ -44,9 +44,9 @@
     </div>
   </div>
 
-  <form action="/somewhere/to/upload" enctype="multipart/form-data">
-    <input type="file" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png"/ >
-    <img id="preview_progressbarTW_img" src="#" width="90%"/>
+  <form  enctype="multipart/form-data">
+    <input name="image" id="image_input" type="file" onchange="ULoad()" targetID="load_img" accept="image/*" />
+    <img id="load_img" src="#" width="90%"/>
  </form>
  
 
