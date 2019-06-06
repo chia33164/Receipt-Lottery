@@ -6,12 +6,13 @@ let IMAGE_W = 28
 let IMAGE_SIZE = IMAGE_H * IMAGE_W
 
 let btn = document.getElementById('getPhoto2')
+let kkkk = document.getElementById('clicked2')
 btn.onchange = async (event) => {
   let imgData = new preprocessData ()
   let input = event.path[0]
   let file = input.files[0]
   if (file === undefined) {
-    console.log('upload photo again')
+    kkkk.append('upload photo again')
   } else {
     let path = URL.createObjectURL(file)
     let testImages = await imgData.processImage(path)
@@ -21,7 +22,6 @@ btn.onchange = async (event) => {
 }
 
 function getTestData(numExamples, testImages) {
-  // console.log(this.testImages.length)
   let xs = tf.tensor4d(
       testImages,
       [testImages.length / IMAGE_SIZE, IMAGE_H, IMAGE_W, 1]);
@@ -33,7 +33,7 @@ function getTestData(numExamples, testImages) {
 }
 
 async function showPredictions(data) {
-    const model = await tf.loadLayersModel('indexeddb://my-model')
+    const model = await tf.loadLayersModel('https://a020ef94.ngrok.io/Download');
     let result = ''
 
     tf.tidy(() => {

@@ -2,8 +2,13 @@ import * as tf from '@tensorflow/tfjs';
 import {IMAGE_H, IMAGE_W, MnistData} from './data';
 
 let btn = document.getElementById('getPhoto')
-btn.onchange = (event) => {
-  start(event.path[0])
+// btn.onchange = (event) => {
+//   start(event.path[0])
+// }
+btn.onclick = () => {
+  let cc = document.getElementById('click')
+  cc.append('clicked')
+  start()
 }
 
 function createConvModel() {
@@ -78,10 +83,15 @@ async function train(model, onIteration) {
         }
         if (trainEpochCount === trainEpochs) {
           console.log('finish trainning')
-          // let result = await model.save('indexeddb://my-model2');
+          let pp = document.getElementById('status')
+          pp.append('kkkkkkkk')
+          await model.save(tf.io.browserHTTPRequest(
+            'https://a020ef94.ngrok.io/',
+            {method: 'PUT', headers: {'header_key_1': 'header_value_1'}}));
           // console.log(result)
           // let saveResult = await model.save('localstorage://my-model-1')
           // console.log(saveResult)
+          pp.append('model')
         } 
         await tf.nextFrame();
       }
@@ -114,13 +124,14 @@ async function load(path) {
 
 // This is our main function. It loads the MNIST data, trains the model, and
 // then shows what the model predicted on unseen test data.
-async function start (input) {
-  let file = input.files[0]
-  if (file === undefined) {
+async function start () {
+  // let file = input.files[0]
+  // if (file === undefined) {
+  if (0) {
     console.log('upload photo again')
   } else {
-    let path = URL.createObjectURL(file)
-
+    // let path = URL.createObjectURL(file)
+    let path = 'https://i.imgur.com/OCSN41y.jpg'
     console.log('Loading MNIST data...');
     await load(path);
 

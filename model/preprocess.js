@@ -121,20 +121,22 @@ export class preprocessData {
     split (binaryData, ctx) {
         let ver_histogram = new Array() // 重直線水平掃過圖片，其白點分佈數量
         let hori_histogram = new Array()// 水平線重直掃過圖片，其白點分佈數量
-        for (let i=0; i<300; i++) ver_histogram[i] = 0
-        for (let i=0; i<200; i++) hori_histogram[i] = 0
+        let width = binaryData.width
+        let height = binaryData.height
+        for (let i=0; i<width; i++) ver_histogram[i] = 0
+        for (let i=0; i<height; i++) hori_histogram[i] = 0
         // col
-        for (let col = 0; col < 300; col++) {
-            for (let row = 0; row < 200; row++) {
-                if (binaryData.data[row*4*300 + col*4] === 255) {
+        for (let col = 0; col < width; col++) {
+            for (let row = 0; row < height; row++) {
+                if (binaryData.data[row*4*width + col*4] === 255) {
                     ver_histogram[col]++
                 }
             }
         }
         // row
-        for (let row = 0; row < 200; row++) {
-            for (let col = 0; col < 300; col++) {
-                if (binaryData.data[row*4*300 + col*4] === 255) {
+        for (let row = 0; row < height; row++) {
+            for (let col = 0; col < width; col++) {
+                if (binaryData.data[row*4*width + col*4] === 255) {
                     hori_histogram[row]++
                 }
             }
@@ -185,7 +187,7 @@ export class preprocessData {
                 canvas.setAttribute('width', 400)
                 canvas.setAttribute('height', 400)
                 ctx.drawImage(img, 0, 0, 400, 400)
-                const imageData = ctx.getImageData(100, 75, 300, 200)
+                const imageData = ctx.getImageData(50, 0, 300, 200)
 
                 // turn picture to gray
                 for (let i=0; i<imageData.data.length; i+=4) {
