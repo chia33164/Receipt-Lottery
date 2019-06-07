@@ -11,6 +11,9 @@ body{
 }
 .index_btn{
     width:85%; 
-    height:150px;
+    height:100px;
     font-size:40px;
+}
+.bar_color{
+    background-color:slateblue;
 }

@@ -10,18 +10,10 @@ function readURL(input){
     reader.readAsDataURL(input.files[0]);
   }
 }
-//用來測試從前端server發request給後端server
-function ULoad(){
-  var file = document.getElementById('image_input').files[0];
-  var xhr = new XMLHttpRequest();
-  console.log(file);
-  xhr.open('POST', 'https://27b74fbb.ngrok.io/QRcode');
-  xhr.setRequestHeader('Content-Type', "multipart/form-data");
-  xhr.send(file);
-}
 
+//丟照片給後端
 function sendFormData(){
-  var serverURL="https://ac39d6f6.ngrok.io/QRcode";
+  var serverURL="https://482f5f8b.ngrok.io/QRcode";
   var fileselect = document.getElementById("image_input");
   var imagefile = fileselect.files;
   var Myformdata =new FormData();
@@ -49,10 +41,10 @@ function sendFormData(){
           alert(tell_msg);
         }
     }
-    else{
+    else if(this.readyState==4){
       alert("送出失敗");
-      console.log(imagefile.name)
     }
+
   }
   
 };

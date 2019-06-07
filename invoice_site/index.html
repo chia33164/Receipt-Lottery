@@ -9,11 +9,14 @@
   <title>Invoice</title>
 </head>
 <body >
-  <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-danger">
+  <nav class="navbar fixed-top navbar-expand-sm navbar-dark bar_color" >
     <!--logo的部分-->
-    <a class="navbar-brand " href="index.html" >發票</a>
+    <a class="navbar-brand " href="index.html" >
+      <img src="images/iconF.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+      發票
+    </a>
     <!--右邊的選單鈕-->
-    <button class="navbar-toggler border border-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler border border-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon "></span>
     </button>
   
@@ -30,6 +33,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">一般發票掃描</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="manual_input.html">手動輸入號碼</a>
         </li>
 
       </ul>
@@ -48,33 +54,32 @@
     </div>
     <div class="row ">
       <div class="col index_btn_div">
-        <button type="button" class="btn btn-primary index_btn"  onclick="self.location.href='invoice_passbook.html'">
+        <button type="button" class="btn btn-success index_btn"  onclick="self.location.href='invoice_passbook.html'">
           發票存摺
         </button>
-
-      </div>
-        
-      
+    </div>
+           
     </div>
     <div class="row ">
       <div class="col index_btn_div">
-        <button type="button" class="btn btn-success index_btn"  onclick="self.location.href='qrcode_scan.html'">
+        <button type="button" class="btn btn-primary index_btn"  onclick="self.location.href='qrcode_scan.html'">
           電子發票掃描
         </button>
-  
-      </div>
-          
-        
+      </div>        
     </div>
     <div class="row ">
       <div class="col index_btn_div">
-        <button type="button" class="btn btn-dark index_btn"  onclick="self.location.href='#'">
+        <button type="button" class="btn btn-info index_btn"  onclick="self.location.href='#'">
           傳統發票掃描
-        </button>
-    
+        </button>    
       </div>
-            
-          
+    </div>
+    <div class="row ">
+      <div class="col index_btn_div">
+        <button type="button" class="btn btn-dark index_btn"  onclick="self.location.href='manual_input.html'">
+          手動輸入號碼
+        </button>    
+      </div>
     </div>
   
 

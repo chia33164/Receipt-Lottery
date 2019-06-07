@@ -32,7 +32,7 @@ function get_winning(){
     console.log(year);
     console.log(month_fix);
     /* 發request*/
-    var serverURL = "https://55f5b8ec.ngrok.io/prizenum?"+"year="+year+"&month="+month_fix;
+    var serverURL = "https://482f5f8b.ngrok.io/prizenum?"+"year="+year+"&month="+month_fix;
     var xhr = new XMLHttpRequest();
     xhr.open('POST',serverURL,true);
     xhr.withCredentials=false;

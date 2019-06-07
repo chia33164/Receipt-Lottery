@@ -122,7 +122,7 @@ function get_detail(){
   console.log(year);
   console.log(month_fix);
   /* 發request*/
-  var serverURL = "https://55f5b8ec.ngrok.io/ItemDetail?"+"year="+year+"&month="+month_fix;
+  var serverURL = "https://482f5f8b.ngrok.io/ItemDetail?"+"year="+year+"&month="+month_fix;
   var xhr = new XMLHttpRequest();
   xhr.open('GET',serverURL,true);
   xhr.withCredentials=false;
@@ -152,6 +152,7 @@ function renew_detail(list_json){
   var id_number = 0 //用來控制每個card中head與body的id
   var qr_num = list_json[0].length;//電子發票的數目
   var tra_num = list_json[1].length;//傳統發票的數目
+  var man_num = list_json[2].length;//手動輸入的數目
   var accordion = document.getElementById("accordion")//得到該元素
   accordion.innerHTML="";//先清空accordion裡的東西
   //把電子發票的每個折疊新增上去
@@ -161,6 +162,11 @@ function renew_detail(list_json){
     id_number++;
   }
    
+  for(var k = 0 ; k < man_num ; k++){
+    var get_card = add_card(list_json[2][k],id_number,2);
+    accordion.appendChild(get_card);
+    id_number++;
+  }
   //把傳統發票的每個折疊新增上去
   for(var j = 0 ; j < tra_num ; j++){
     var get_card = add_card(list_json[1][j],id_number,1);
@@ -211,6 +217,10 @@ function add_card(one_invoice_json,theNum,mode){
   else if(mode == 1){
     center_item.innerHTML = "<div>"+one_invoice_json.Number+"</div>";
     right_item.innerHTML="<div>傳統</div><div>發票</div>";
+  }
+  else if(mode == 2){
+    center_item.innerHTML = "<div>"+one_invoice_json.Number+"</div>";
+    right_item.innerHTML="<div>手動</div><div>輸入</div>";
   }
   
   //串連起來

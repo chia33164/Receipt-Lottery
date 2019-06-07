@@ -6,17 +6,16 @@
   
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="styles/style.css" type="text/css" rel="stylesheet"/>
-  <link href="styles/passbook_style.css" type="text/css" rel="stylesheet"/>
-
+  <!--借清單的用一下-->
+  <link href="styles/winning_style.css" type="text/css" rel="stylesheet"/>
   <title>Invoice</title>
-
 </head>
-<body id="pb_body">
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bar_color" >
+<body id="qr_body">
+  <nav class="navbar fixed-top navbar-expand-sm navbar-dark bar_color">
     <!--logo的部分-->
     <a class="navbar-brand" href="index.html">
-      <img src="images/iconF.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
-      發票
+        <img src="images/iconF.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+        發票
     </a>
     <!--右邊的選單鈕-->
     <button class="navbar-toggler border-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,36 +24,47 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+  
         <li class="nav-item">
-          <a class="nav-link" href="winning_list.html">發票對獎號碼<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="winning_list.html">發票對獎號碼</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="invoice_passbook.html">發票存摺</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="qrcode_scan.html">電子發票掃描</a>
+          <a class="nav-link" href="qrcode_scan.html">電子發票掃描 </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">一般發票掃描</a>
+            <a class="nav-link" href="#">一般發票掃描</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="manual_input.html">手動輸入號碼</a>
+            <a class="nav-link active" href="manual_input.html">手動輸入號碼<span class="sr-only">(current)</span></a>
         </li>
-
       </ul>
 
     </div>
   </nav>
-  <!--該分頁的標題-->
-  <div class="container-fluid " >
+
+  <!--該網頁的標題-->
+  <div class="container-fluid" style="margin-bottom: 10%;">
     <div id="titlename" style="text-align:center;">
-      <p style="margin:10px;">發票存摺</p>
+      <p style="margin:10px;">手動輸入號碼</p>
     </div>
   </div>
-</div>
-<!--控制選單-->
-<div id="ss" class="container-fluid " >
+  <div id="ss" class="container-fluid " >
+    <div class="d-flex justify-content-center" style="margin:10px;">
+        <form id="numberform">
+            <div class="form-group ">
+                <label for="number_input">。輸入發票末8位數字：</label>
+                <input type="text" class="form-control" id="number_input" placeholder="例如：12345678">
+            </div>
+        </form>
+       
+  </div>
+  <div id="ss" class="container-fluid " >
+    <div class="d-flex justify-content-center">。選擇發票期別：</div>
     <div class="d-flex  justify-content-center" style="margin:10px;">
+        
         <form id="termform">
             <select id="yearchoose" onchange="renew_select_month()">
             　<option value="108">108</option>
@@ -65,44 +75,15 @@
     
             <select id="monthchoose">
             　<option >1～2</option>
+            　<option >3～4</option>
+            　<option >5～6</option>
+
             </select>
             <span style="display:inline;">月</span>
-            <button type="button" class="btn btn-success" style="font-size:100%;" onclick="get_detail()">查詢</button>
+            <button type="button" class="btn btn-success" style="font-size:100%;" onclick="getManual_data()">送出</button>
         </form>
        
-</div>
-
-<!--有多少發票的項目-->
-<div id="accordion" role="tablist">
-        <div class="card" >
-            <a  class="card_label" style="text-decoration:none;" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                <div class="card-header d-flex flex-row justify-content-between" role="tab" id="headingOne" >
-                    <div class="align-self-center" >
-                        <div>尚未</div>
-                        <div>開獎</div>
-                    </div>
-                    <div class="justify-content-center blackfont">
-                        <div>PX12345678</div>
-                        <div>2020/20/20</div>
-                    </div>
-                    <div class="align-self-center">
-                        <div>電子</div>
-                        <div>發票</div>
-                    </div>
-                </div>
-            </a>
-      
-            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>綠茶1</div>
-                        <div>30元</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-</div>
+    </div>
 
   
 
@@ -111,6 +92,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="scripts/passbook.js"></script>
-</body>
+    <script src="scripts/manual.js"></script>
+  </body>
 </html>
