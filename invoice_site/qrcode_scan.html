@@ -8,7 +8,7 @@
   <link href="styles/style.css" type="text/css" rel="stylesheet"/>
   <title>Invoice</title>
 </head>
-<body>
+<body id="qr_body">
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-danger">
     <!--logo的部分-->
     <a class="navbar-brand" href="index.html">發票</a>
@@ -45,23 +45,19 @@
   </div>
   <!--預覽相片的img-->
   <div class = "container-fluid">
-    <form  method="POST" enctype="multipart/form-data">
+    <form   enctype="multipart/form-data">
       <div class="custom-file" style="margin-top:10px; margin-bottom:10px;">
-        <input type="file" class="custom-file-input" targetID="preview_progressbarTW_img" id="customFile" accept="image/*"  name="image" value="select" onchange="readURL(this)">
-        <label class="custom-file-label" for="customFile">選擇檔案或拍照</label>
+        <input type="file" class="custom-file-input" targetID="load_img" id="image_input" accept="image/*"  name="image"  onchange="readURL(this)">
+        <label class="custom-file-label" for="load_image">選擇檔案或拍照</label>
       </div>
       
-        <img  class="border border-dark" id="preview_progressbarTW_img" src="#" width="100%" alt="請拍照或上傳發票"/>
+        <img  class="border border-dark" id="load_img" src="#" width="100%" alt="圖片預覽"/>
     
-      <div>
-        <input class="border boder-dark"type="submit" id="submit" value="上傳" style="margin: 10px;">
-      </div>
+      
       
     </form>
-    <iframe name= "form" id="form">
-
-    </iframe>
-    <p>ddd</p>
+      <button type="submit" class="btn btn-danger" style="font-size:100%;margin:20px;" onclick="sendFormData()">送出</button>
+    
   </div>
 
   
