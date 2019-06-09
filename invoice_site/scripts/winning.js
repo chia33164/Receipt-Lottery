@@ -110,7 +110,7 @@ function default_select(){
 }
 //更新下拉單的月份
 function renew_select_month(){
-    yearchoose = document.getElementById("yearchoose")
+    var yearchoose = document.getElementById("yearchoose")
     var year_now_index = yearchoose.selectedIndex;
     var year = yearchoose.options[year_now_index].value
     var index = year-oldest_year;
@@ -128,3 +128,8 @@ function renew_select_month(){
 
 default_select();
 get_winning();
+
+module.exports={
+    renew_select_month:renew_select_month,
+    get_winning:get_winning
+}

@@ -11,9 +11,12 @@
     </head>
     <body>
         <!--上方導航欄的部分-->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-danger">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bar_color">
             <!--logo的部分-->
-            <a class="navbar-brand" href="index.html">發票</a>
+            <a class="navbar-brand" href="invoice_site/index.html">
+                <img src="invoice_site/images/iconF.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+                發票
+            </a>
             <!--右邊的選單鈕-->
             <button class="navbar-toggler border-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,16 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">       
                     <li class="nav-item">
-                        <a class="nav-link" href="#">發票對獎號碼</a>
+                        <a class="nav-link" href="invoice_site/winning_list.html">發票對獎號碼</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">發票存摺</a>
+                        <a class="nav-link" href="invoice_site/invoice_passbook.html">發票存摺</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="invoice_site/qrcode_scan.html">電子發票掃描</a>
                     </li>
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">電子發票掃描 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">一般發票掃描 <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">一般發票掃描</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="invoice_site/manual_input.html">手動輸入號碼</a>
                     </li>
                 </ul>
             </div>
@@ -80,5 +86,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src = "invoice_site/scripts/traditional.js"> </script>
     </body> 
 </html>

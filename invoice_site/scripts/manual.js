@@ -39,7 +39,7 @@ function default_select(){
 }
 //更新下拉單的月份
 function renew_select_month(){
-    yearchoose = document.getElementById("yearchoose")
+    var yearchoose = document.getElementById("yearchoose")
     var year_now_index = yearchoose.selectedIndex;
     var year = yearchoose.options[year_now_index].value
     var index = year-oldest_year;
@@ -72,6 +72,8 @@ function getManual_data(){
         alert("輸入格式有誤喔！");
         return;
     }
+    //添加loading動畫
+    load_img(0);
     /* 發request*/
     var serverURL = "https://482f5f8b.ngrok.io/manual?"+"year="+year+"&month="+month_fix+"&code="+number;
     var xhr = new XMLHttpRequest();
@@ -82,10 +84,14 @@ function getManual_data(){
         if(this.readyState==4 && this.status==200){
             var data=JSON.parse(this.responseText);
             alert("發送成功！");
+            //刪除loading動畫
+            load_img(1);
           
         }
-        else if(readyState==4 && this.status==404){
+        else if(this.readyState==4 && this.status==404){
             alert("發送失敗！");
+            //刪除loading動畫
+            load_img(1);
         }
     }
     
@@ -98,3 +104,27 @@ function padLeft(str,lenght){
     return padLeft("0" +str,lenght);
 }
 default_select()//頁面剛更新時
+
+function load_img(mode){
+    if(mode == 0){
+      var qrbody = document.getElementById("qr_body");
+      var center_div=document.createElement("div");
+      var load = document.createElement("div");
+      center_div.className="d-flex justify-content-center";
+      center_div.id="load_div";
+      load.className="spinner-border text-primary";
+      load.setAttribute("role","status");
+      load.id = "load_ani";
+      center_div.appendChild(load);
+      qrbody.appendChild(center_div);
+    }
+    else if(mode == 1){
+      var exist_load_div = document.getElementById("load_div");
+      var parent_obj = exist_load_div.parentNode;
+      parent_obj.removeChild(exist_load_div);
+    }
+}
+module.exports={
+    getManual_data:getManual_data,
+    renew_select_month:renew_select_month
+}

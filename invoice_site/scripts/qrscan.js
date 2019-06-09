@@ -23,6 +23,8 @@ function sendFormData(){
     alert("你還沒丟照片喔！")
     return;
   }
+  //添加轉圈圈
+  load_img(0);
   Myformdata.append("image" , imagefile[0] , imagefile[0].name);
 
   var xhr = new XMLHttpRequest();
@@ -34,14 +36,20 @@ function sendFormData(){
         var data=JSON.parse(this.responseText);
         console.log(data);
         if(data.msg =="no data"){
+          //刪除動畫
+          load_img(1);
           alert("解碼失敗，\n再來一張清晰的吧><");
         }
         else{
           var tell_msg = "你的號碼是：\n"+ data.invNum;
+          //刪除動畫
+          load_img(1);
           alert(tell_msg);
         }
     }
     else if(this.readyState==4){
+      //刪除動畫
+      load_img(1);
       alert("送出失敗");
     }
 
@@ -55,6 +63,24 @@ function clicktest(){
   text.innerHTML="go";
   body1.appendChild(text);
 }
-
-
+//處理loading動畫
+function load_img(mode){
+  if(mode == 0){
+    var formdiv = document.getElementById("formdiv");
+    var load = document.createElement("div");
+    load.className="spinner-border text-primary";
+    load.setAttribute("role","status");
+    load.id = "load_ani";
+    formdiv.appendChild(load);
+  }
+  else if(mode == 1){
+    var exist_load = document.getElementById("load_ani");
+    var parent_obj = exist_load.parentNode;
+    parent_obj.removeChild(exist_load);
+  }
+}
+module.exports={
+  readURL:readURL,
+  sendFormData:sendFormData
+}
 

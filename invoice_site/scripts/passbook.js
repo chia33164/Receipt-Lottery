@@ -204,9 +204,10 @@ function add_card(one_invoice_json,theNum,mode){
   //中獎與否
   left_item.className="align-self-center";
   //尚未開獎
-  if(one_invoice_json.Win == -1){left_item.innerHTML = "<div>沒有</div><div>中獎</div>";}
-  else if(one_invoice_json.Win == 1){left_item.innerHTML = "<div>恭喜</div><div>中獎</div>";}
-  else if(one_invoice_json.Win == 2){left_item.innerHTML = "<div>尚未</div><div>開獎</div>";}
+  if(one_invoice_json.Win == 0){left_item.innerHTML = "<div>沒有</div><div>中獎</div>";}
+  else if(one_invoice_json.Win == -1){left_item.innerHTML = "<div>尚未</div><div>開獎</div>";}
+  else{left_item.innerHTML = "<div>恭喜</div><div>中獎</div>";}
+  
   //號碼與日期->電子與傳統 //發票種類->//電子與傳統
   center_item.className="justify-content-center blackfont";
   right_item.className="align-self-center";
@@ -285,3 +286,7 @@ console.log(test_json[0][1].detail.length);
 default_select()//頁面剛更新時
 get_detail();
 
+module.exports={
+  get_detail:get_detail,
+  renew_select_month:renew_select_month
+}
