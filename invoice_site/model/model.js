@@ -14,6 +14,10 @@ btn.onchange = async(event) => {
     if (file === undefined) {
         kkkk.append('upload photo again')
     } else {
+        var getphoto = document.getElementById("getPhoto2")
+
+        readURL(getphoto);
+        load_img(0);
         let path = URL.createObjectURL(file)
         let testImages = await imgData.processImage(path)
         let fitData = getTestData(8, testImages)
@@ -47,4 +51,33 @@ async function showPredictions(data) {
     });
     let p = document.getElementById('result')
     p.append(result)
+    load_img(1);
+}
+//預覽圖片
+function readURL(input){
+    if(input.files && input.files[0]){
+      var imageTagID = input.getAttribute("targetID");
+      var reader = new FileReader();
+      reader.onload = function (e) {
+         var img = document.getElementById(imageTagID);
+         img.setAttribute("src", e.target.result)
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+}
+//處理loading動畫
+function load_img(mode){
+    if(mode == 0){
+      var formdiv = document.getElementById("formdiv");
+      var load = document.createElement("div");
+      load.className="spinner-border text-primary";
+      load.setAttribute("role","status");
+      load.id = "load_ani";
+      formdiv.appendChild(load);
+    }
+    else if(mode == 1){
+      var exist_load = document.getElementById("load_ani");
+      var parent_obj = exist_load.parentNode;
+      parent_obj.removeChild(exist_load);
+    }
 }

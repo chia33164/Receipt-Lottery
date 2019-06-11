@@ -34,7 +34,7 @@
                       <a class="nav-link" href="qrcode_scan.html">電子發票掃描</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">一般發票掃描 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="traditional.html">一般發票掃描 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="manual_input.html">手動輸入號碼</a>
@@ -43,23 +43,29 @@
             </div>
         </nav>
         <!--上方導航欄的部分結束-->
+        <!--該網頁的標題-->
+        <div class="container-fluid">
+            <div id="titlename" style="text-align:center;">
+            <p style="margin:10px;">傳統發票掃描</p>
+            </div>
+        </div>
         <!--中間上傳檔案-->
         <div class = "container">
-            <button id="getPhoto">click</button>
-            <p id="click"></p>
-            <p id="status"></p>
-            <p id="model"></p>
-            <br></br>
-            <form action='/' method='POST' enctype="multipart/form-data">
-                upload image: <br></br>
-            <input id="getPhoto2" type="file" name="image" value="select" accept="image/*" capture="camera"/>
+
+            <div id="formdiv" class = "container-fluid">
+                <form   enctype="multipart/form-data">
+                  <div class="custom-file" style="margin-top:10px; margin-bottom:10px;">
+                    <input type="file" class="custom-file-input" targetID="load_img" id="getPhoto2" accept="image/*"  name="image"  onchange="index.readURL(this)">
+                    <label class="custom-file-label" for="load_image">選擇檔案或拍照</label>
+                  </div>
+                    <img  class="border border-dark" id="load_img" src="#" width="100%" height="350px" alt="圖片預覽"/>
+                </form>
+                  
+            
+            </div>
+
             <p id="result"></p>
-            <br></br>
-            </form>
-            <!-- <button id="getPhoto2">click2</button> -->
-            <p id="clicked2"></p>
-            <p id="result"></p>
-            <br></br>
+            
         </div>
         <!--下方選單的部分，-->
         <div id="ss" class="container-fluid " >
@@ -77,7 +83,7 @@
                         　<option >1～2</option>
                         </select>
                         <span style="display:inline;">月</span>
-                        <button type="button" class="btn btn-success" style="font-size:100%;" onclick="test_detail()">送出</button>
+                        <button type="button" class="btn btn-success" style="font-size:100%;" onclick="index.send_invoice_number()">送出</button>
                     </form>
                    
         </div>
